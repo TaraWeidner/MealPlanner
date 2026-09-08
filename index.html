@@ -3,55 +3,81 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Dinner ideas based on ingredients you already have, with recipe searches across dozens of trusted cooking sites." />
-  <title>What's for Dinner?</title>
+  <meta name="theme-color" content="#09070d" />
+  <meta name="description" content="The Weidner Family dinner command center: meal ideas based on ingredients already in the house, with recipe searches across dozens of cooking sites." />
+  <title>Weidner Family // Dinner Command Center</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Inter:wght@400;600;700;800&family=Orbitron:wght@600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+  <div class="ambient ambient-one" aria-hidden="true"></div>
+  <div class="ambient ambient-two" aria-hidden="true"></div>
+
   <div class="page-shell">
     <header class="hero">
-      <p class="eyebrow">Dinner without the decision fatigue</p>
-      <h1>What’s for Dinner?</h1>
+      <div class="brand-lockup">
+        <div class="brand-mark" aria-hidden="true">
+          <span class="brand-mark-w">W</span>
+          <span class="brand-mark-slash">//</span>
+        </div>
+        <div>
+          <p class="system-label">WEIDNER HOUSEHOLD SYSTEMS</p>
+          <p class="brand-subtitle">DINNER PROTOCOL // v1.0</p>
+        </div>
+      </div>
+
+      <div class="status-strip" aria-label="System status">
+        <span><i class="status-dot"></i> PANTRY ONLINE</span>
+        <span>PARTY SIZE: CONFIGURABLE</span>
+        <span>THREAT LEVEL: HUNGRY</span>
+      </div>
+
+      <p class="eyebrow">Tonight's Main Quest</p>
+      <h1>Dinner<br /><span>Command Center</span></h1>
       <p class="hero-copy">
-        Tell me what’s hanging out in your fridge, freezer, and pantry. I’ll suggest meals that use as much of it as possible, then help you search dozens of cooking sites for recipes that fit.
+        Inventory the fridge, freezer, and pantry. The system will calculate your strongest dinner options, tell you what you already have, and open portals to a ridiculous number of recipe sources when you want reinforcements.
       </p>
+      <p class="hero-flavor">No loot box required. Side quests optional. Feeding the family is the win condition.</p>
     </header>
 
     <main>
-      <section class="planner-card" aria-labelledby="planner-heading">
+      <section class="planner-card terminal-panel" aria-labelledby="planner-heading">
+        <div class="panel-corners" aria-hidden="true"></div>
         <div class="section-heading">
           <div>
-            <p class="eyebrow">Step 1</p>
-            <h2 id="planner-heading">What do you have?</h2>
+            <p class="eyebrow">01 // Inventory</p>
+            <h2 id="planner-heading">What survived the pantry?</h2>
           </div>
-          <button type="button" class="text-button" id="loadExampleButton">Load an example</button>
+          <button type="button" class="text-button" id="loadExampleButton">Load starter loot</button>
         </div>
 
-        <label class="field-label" for="ingredients">Ingredients</label>
+        <label class="field-label" for="ingredients">Available ingredients</label>
         <textarea
           id="ingredients"
           rows="6"
           placeholder="Chicken breast, rice, broccoli, tortillas, cheddar, eggs, onion..."
         ></textarea>
-        <p class="field-help">Separate ingredients with commas, semicolons, or new lines. Exact quantities aren’t necessary.</p>
+        <p class="field-help">Comma, semicolon, or new-line separated. Quantities are optional; vibes are accepted.</p>
 
         <div class="filter-grid">
           <div class="field-group">
-            <label class="field-label" for="maxTime">Maximum cook time</label>
+            <label class="field-label" for="maxTime">Time until mutiny</label>
             <select id="maxTime">
-              <option value="999">Any time</option>
+              <option value="999">No time limit</option>
               <option value="20">20 minutes</option>
               <option value="30" selected>30 minutes</option>
               <option value="45">45 minutes</option>
               <option value="60">60 minutes</option>
-              <option value="240">Slow-cooker friendly</option>
+              <option value="240">Slow-cooker ritual</option>
             </select>
           </div>
 
           <div class="field-group">
-            <label class="field-label" for="method">Cooking method</label>
+            <label class="field-label" for="method">Weapon of choice</label>
             <select id="method">
-              <option value="any">Anything</option>
+              <option value="any">Anything goes</option>
               <option value="stovetop">Stovetop</option>
               <option value="oven">Oven</option>
               <option value="air fryer">Air fryer</option>
@@ -61,82 +87,86 @@
           </div>
 
           <div class="field-group">
-            <label class="field-label" for="servings">People to feed</label>
+            <label class="field-label" for="servings">Party size</label>
             <select id="servings">
-              <option value="2">2 people</option>
-              <option value="4" selected>4 people</option>
-              <option value="6">6+ people</option>
+              <option value="2">2 players</option>
+              <option value="4" selected>4 players</option>
+              <option value="6">6+ players</option>
             </select>
           </div>
         </div>
 
         <fieldset class="toggle-group">
-          <legend>Preferences</legend>
+          <legend>Modifiers</legend>
           <label class="toggle-option">
             <input type="checkbox" id="vegetarian" />
-            <span>Vegetarian</span>
+            <span>Vegetarian mode</span>
           </label>
           <label class="toggle-option">
             <input type="checkbox" id="glutenFree" />
-            <span>Gluten-free</span>
+            <span>Gluten-free mode</span>
           </label>
           <label class="toggle-option">
             <input type="checkbox" id="lowEffort" />
-            <span>Low effort only</span>
+            <span>Low-energy run</span>
           </label>
         </fieldset>
 
         <div class="action-row">
-          <button type="button" class="button button-primary" id="suggestButton">Give me dinner ideas</button>
-          <button type="button" class="button button-secondary" id="surpriseButton">Surprise me</button>
-          <button type="button" class="button button-ghost" id="clearButton">Clear</button>
+          <button type="button" class="button button-primary" id="suggestButton">Generate dinner quests</button>
+          <button type="button" class="button button-secondary" id="surpriseButton">Roll the dice</button>
+          <button type="button" class="button button-ghost" id="clearButton">Purge inventory</button>
         </div>
       </section>
 
       <section class="results-section" aria-labelledby="results-heading">
         <div class="results-header">
           <div>
-            <p class="eyebrow">Step 2</p>
-            <h2 id="results-heading">Dinner ideas</h2>
+            <p class="eyebrow">02 // Mission Select</p>
+            <h2 id="results-heading">Tonight's candidates</h2>
           </div>
           <p id="resultCount" class="result-count" aria-live="polite"></p>
         </div>
 
         <div id="results" class="results-grid" aria-live="polite">
-          <div class="empty-state">
-            <h3>Ready when you are.</h3>
-            <p>Add what you have above, then choose <strong>Give me dinner ideas</strong>.</p>
+          <div class="empty-state terminal-panel">
+            <div class="empty-icon" aria-hidden="true">?</div>
+            <h3>Awaiting inventory scan.</h3>
+            <p>Enter what’s in the house, then hit <strong>Generate dinner quests</strong>.</p>
           </div>
         </div>
       </section>
 
-      <section class="source-panel" aria-labelledby="source-heading">
+      <section class="source-panel terminal-panel" aria-labelledby="source-heading">
+        <div class="panel-corners" aria-hidden="true"></div>
         <div class="source-heading">
           <div>
-            <p class="eyebrow">Step 3</p>
-            <h2 id="source-heading">Search the recipe web</h2>
+            <p class="eyebrow">03 // Summon Reinforcements</p>
+            <h2 id="source-heading">Search the recipe multiverse</h2>
             <p class="source-copy" id="sourceCopy">
-              Once you enter ingredients, these links will search a large collection of cooking and recipe sites for dinner ideas using what you have.
+              Once ingredients are loaded, these portals search a huge collection of cooking and recipe sites for ideas using what you have.
             </p>
           </div>
-          <button type="button" class="text-button" id="toggleSourcesButton">Show all sources</button>
+          <button type="button" class="text-button" id="toggleSourcesButton">Reveal all portals</button>
         </div>
 
         <div id="sourceGrid" class="source-grid"></div>
 
         <div class="source-tools">
-          <a class="button button-primary" id="searchEverythingLink" href="https://www.google.com/search?q=dinner+recipe+ideas" target="_blank" rel="noopener noreferrer">Search the whole web</a>
-          <a class="button button-secondary" id="searchVideosLink" href="https://www.youtube.com/results?search_query=dinner+recipe+ideas" target="_blank" rel="noopener noreferrer">Search cooking videos</a>
+          <a class="button button-primary" id="searchEverythingLink" href="https://www.google.com/search?q=dinner+recipe+ideas" target="_blank" rel="noopener noreferrer">Search the entire web</a>
+          <a class="button button-secondary" id="searchVideosLink" href="https://www.youtube.com/results?search_query=dinner+recipe+ideas" target="_blank" rel="noopener noreferrer">Open video walkthroughs</a>
         </div>
 
         <p class="source-note">
-          Recipe-site links open searches on or for the named source. This app does not copy or republish their recipes; the original site remains the source for ingredients, instructions, photos, and attribution.
+          External links search the named recipe publishers; their recipes stay on their original sites with their ingredients, instructions, photography, and attribution intact.
         </p>
       </section>
     </main>
 
     <footer>
-      <p>Built for the eternal question: “What are we having for dinner?”</p>
+      <div class="footer-rule"></div>
+      <p class="footer-brand">THE WEIDNER FAMILY // DINNER COMMAND CENTER</p>
+      <p>Built to defeat the most persistent household boss battle: <em>“What are we having for dinner?”</em></p>
     </footer>
   </div>
 
