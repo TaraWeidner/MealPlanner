@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Dinner ideas based on ingredients you already have." />
+  <title>What's for Dinner?</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="page-shell">
+    <header class="hero">
+      <p class="eyebrow">Dinner without the decision fatigue</p>
+      <h1>What’s for Dinner?</h1>
+      <p class="hero-copy">
+        Tell me what’s hanging out in your fridge, freezer, and pantry and I’ll suggest meals that use as much of it as possible.
+      </p>
+    </header>
+
+    <main>
+      <section class="planner-card" aria-labelledby="planner-heading">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Step 1</p>
+            <h2 id="planner-heading">What do you have?</h2>
+          </div>
+          <button type="button" class="text-button" id="loadExampleButton">Load an example</button>
+        </div>
+
+        <label class="field-label" for="ingredients">Ingredients</label>
+        <textarea
+          id="ingredients"
+          rows="6"
+          placeholder="Chicken breast, rice, broccoli, tortillas, cheddar, eggs, onion..."
+        ></textarea>
+        <p class="field-help">Separate ingredients with commas, semicolons, or new lines. Exact quantities aren’t necessary.</p>
+
+        <div class="filter-grid">
+          <div class="field-group">
+            <label class="field-label" for="maxTime">Maximum cook time</label>
+            <select id="maxTime">
+              <option value="999">Any time</option>
+              <option value="20">20 minutes</option>
+              <option value="30" selected>30 minutes</option>
+              <option value="45">45 minutes</option>
+              <option value="60">60 minutes</option>
+              <option value="240">Slow-cooker friendly</option>
+            </select>
+          </div>
+
+          <div class="field-group">
+            <label class="field-label" for="method">Cooking method</label>
+            <select id="method">
+              <option value="any">Anything</option>
+              <option value="stovetop">Stovetop</option>
+              <option value="oven">Oven</option>
+              <option value="air fryer">Air fryer</option>
+              <option value="slow cooker">Slow cooker</option>
+              <option value="no cook">No-cook</option>
+            </select>
+          </div>
+
+          <div class="field-group">
+            <label class="field-label" for="servings">People to feed</label>
+            <select id="servings">
+              <option value="2">2 people</option>
+              <option value="4" selected>4 people</option>
+              <option value="6">6+ people</option>
+            </select>
+          </div>
+        </div>
+
+        <fieldset class="toggle-group">
+          <legend>Preferences</legend>
+          <label class="toggle-option">
+            <input type="checkbox" id="vegetarian" />
+            <span>Vegetarian</span>
+          </label>
+          <label class="toggle-option">
+            <input type="checkbox" id="glutenFree" />
+            <span>Gluten-free</span>
+          </label>
+          <label class="toggle-option">
+            <input type="checkbox" id="lowEffort" />
+            <span>Low effort only</span>
+          </label>
+        </fieldset>
+
+        <div class="action-row">
+          <button type="button" class="button button-primary" id="suggestButton">Give me dinner ideas</button>
+          <button type="button" class="button button-secondary" id="surpriseButton">Surprise me</button>
+          <button type="button" class="button button-ghost" id="clearButton">Clear</button>
+        </div>
+      </section>
+
+      <section class="results-section" aria-labelledby="results-heading">
+        <div class="results-header">
+          <div>
+            <p class="eyebrow">Step 2</p>
+            <h2 id="results-heading">Dinner ideas</h2>
+          </div>
+          <p id="resultCount" class="result-count" aria-live="polite"></p>
+        </div>
+
+        <div id="results" class="results-grid" aria-live="polite">
+          <div class="empty-state">
+            <h3>Ready when you are.</h3>
+            <p>Add what you have above, then choose <strong>Give me dinner ideas</strong>.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>Built for the eternal question: “What are we having for dinner?”</p>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
